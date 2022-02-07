@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+    const app =Vue.createApp({
+      data() {
+        return {
+            list:[],
+            inputValue:'',
+        };
+      },
+      methods: {
+        add() {
+          this.list.push(this.inputValue);
+          this.inputValue = '';
+
+        },
+        remove() {
+          this.list.pop();
+        },
+      },
+      template: `
+        <div>
+            <my-component/>
+            <input v-model="inputValue"/>
+            <button @click="add">add person</button>
+            <button @click="remove">del person</button>
+         
+            <ul>
+                <my-jiali 
+                    v-for="(item,index) in list"
+                    v-bind:item="item"
+                    v-bind:index="index"
+                />
+                </ul>
+        </div>
+        `,
+    })
+    app.component('my-component',{
+      props:['name'],
+      template:`
+      <div>
+        <h1 style='text-align:center'>Welcome Vue.js</h1>
+      </div>
+      `,
+    })
+
+    app.component('my-jiali',{
+        props:['index','item'],
+        template:`
+            <div>
+                <li>[{{index}}]-{{item}}</li>    
+            </div>
+        `
+    })
+
+
+    app.mount("#app");
+  </script>
+</body>
+</html>

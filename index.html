@@ -15,7 +15,7 @@
       data() {
         return {
           content: "",
-          meal: "First Select Meal1",
+          meal: "First Select Meal",
           isShowMeal: false,
         };
       },
@@ -30,11 +30,12 @@
       template: `
         <div>
             <div>{{content}}</div>
-            <button @click="welcomeBtnClick">有顾客来</button>&nbsp;
-            <button @click="byeBtnClick">顾客离开</button>
-            <div v-if="isShowMeal">
+             <div v-if="isShowMeal">
             {{meal}}
             </div>
+            <button @click="welcomeBtnClick">有顾客来</button>&nbsp;
+            <button @click="byeBtnClick">顾客离开</button>&nbsp;
+           
             <button @click="isShowMeal = !isShowMeal">{{isShowMeal ? 'Hide' : 'Show'}}</button>
         </div>
         `,

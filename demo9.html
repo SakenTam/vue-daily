@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DEMO9</title>
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <div id="app"></div>
+
+</body>
+
+<script>
+    const app=Vue.createApp({
+        data(){
+            return {
+                message:"sakentam.icu"
+            }
+        },
+        template:`<h2 
+        @click='handleItemClick'
+        v-html='message'
+        v-bind:title='message'
+        ></h2>`,
+        methods:{
+            handleItemClick(){
+                alert("clicked")
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+</html>
