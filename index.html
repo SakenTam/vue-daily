@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          content: "",
+          meal: "First Select Meal",
+          isShowMeal: false,
+        };
+      },
+      methods: {
+        welcomeBtnClick() {
+          this.content = "Welcome to Vue.js";
+        },
+        byeBtnClick() {
+          this.content = "Bye to Vue.js";
+        },
+      },
+      template: `
+        <div>
+            <div>{{content}}</div>
+            <button @click="welcomeBtnClick">有顾客来</button>&nbsp;
+            <button @click="byeBtnClick">顾客离开</button>
+            <div v-if="isShowMeal">
+            {{meal}}
+            </div>
+            <button @click="isShowMeal = !isShowMeal">{{isShowMeal ? 'Hide' : 'Show'}}</button>
+        </div>
+        `,
+    }).mount("#app");
+  </script>
+</html>
